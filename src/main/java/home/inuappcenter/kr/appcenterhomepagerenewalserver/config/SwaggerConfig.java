@@ -1,4 +1,4 @@
-package com.appcenter.photoapi.config;
+package home.inuappcenter.kr.appcenterhomepagerenewalserver.config;
 
 
 import io.swagger.v3.oas.models.OpenAPI;
@@ -11,8 +11,8 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI springOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Spring Photo API")
-                        .description("스프링 사진 업로드 기능 테스트 API")
+                .info(new Info().title("Appcenter Homepage Application")
+                        .description("앱센터 홈페이지 애플리케이션")
                         .version("v0.0.1"));
     }
 }
