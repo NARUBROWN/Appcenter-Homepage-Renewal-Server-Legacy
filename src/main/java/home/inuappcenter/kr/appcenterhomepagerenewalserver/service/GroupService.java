@@ -1,13 +1,13 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.service;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.domain.Group;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.domain.Member;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.domain.Role;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.GroupRequestDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.GroupResponseDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.repository.GroupRepository;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.repository.MemberRepository;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.repository.RoleRepository;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Group;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Member;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Role;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.GroupRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.GroupResponseDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.GroupRepository;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.MemberRepository;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.RoleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

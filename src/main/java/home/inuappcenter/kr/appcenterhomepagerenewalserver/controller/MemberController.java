@@ -1,7 +1,7 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.controller;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.MemberRequestDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.MemberResponseDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.MemberRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.MemberResponseDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -40,5 +40,8 @@ public class MemberController {
         MemberResponseDto memberResponseDto = memberService.saveMember(memberRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(memberResponseDto);
     }
+
+    // 삭제 API 필요
+    // 그룹에 등록되어 있는지 확인 후, 등록 안되어 있는 경우에만 삭제처리 하게끔 구현
 
 }

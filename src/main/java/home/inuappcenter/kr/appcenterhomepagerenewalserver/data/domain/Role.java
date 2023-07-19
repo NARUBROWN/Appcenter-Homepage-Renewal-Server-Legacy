@@ -1,7 +1,7 @@
-package home.inuappcenter.kr.appcenterhomepagerenewalserver.domain;
+package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.RoleRequestDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.RoleResponseDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.RoleRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.RoleResponseDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

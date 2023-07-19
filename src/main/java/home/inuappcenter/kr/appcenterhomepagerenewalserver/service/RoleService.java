@@ -1,9 +1,9 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.service;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.domain.Role;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.RoleRequestDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.RoleResponseDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.repository.RoleRepository;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Role;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.RoleRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.RoleResponseDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.RoleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;

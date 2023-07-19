@@ -1,6 +1,6 @@
-package home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response;
+package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.domain.Group;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Group;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

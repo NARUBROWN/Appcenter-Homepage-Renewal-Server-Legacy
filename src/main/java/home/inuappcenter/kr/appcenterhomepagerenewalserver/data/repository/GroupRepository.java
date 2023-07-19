@@ -1,6 +1,6 @@
-package home.inuappcenter.kr.appcenterhomepagerenewalserver.repository;
+package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.domain.Group;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

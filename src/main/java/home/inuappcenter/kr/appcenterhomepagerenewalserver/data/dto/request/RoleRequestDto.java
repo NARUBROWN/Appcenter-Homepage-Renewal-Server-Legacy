@@ -1,4 +1,4 @@
-package home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request;
+package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,7 @@
-package home.inuappcenter.kr.appcenterhomepagerenewalserver.domain;
+package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.GroupRequestDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.GroupResponseDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.GroupRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.GroupResponseDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
