@@ -1,13 +1,12 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.domain;
 
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.MemberRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.MemberResponseDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -28,5 +27,11 @@ public class Member {
     public void setMember(MemberRequestDto memberRequestDto) {
         this.name = memberRequestDto.getName();
         this.description = memberRequestDto.getDescription();
+    }
+
+    public MemberResponseDto toMemberResponseDto(Member member) {
+        MemberResponseDto memberResponseDto = new MemberResponseDto();
+        memberResponseDto.setMemberResponseDto(member);
+        return memberResponseDto;
     }
 }

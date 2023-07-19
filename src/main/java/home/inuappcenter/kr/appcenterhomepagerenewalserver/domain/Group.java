@@ -1,6 +1,7 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.domain;
 
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.GroupRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.GroupResponseDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -37,5 +38,11 @@ public class Group {
         this.role_id = role;
         this.part = groupRequestDto.getPart();
         this.year = groupRequestDto.getYear();
+    }
+
+    public GroupResponseDto toGroupResponseDto(Group group) {
+        GroupResponseDto groupResponseDto = new GroupResponseDto();
+        groupResponseDto.setGroupResponseDto(group);
+        return groupResponseDto;
     }
 }

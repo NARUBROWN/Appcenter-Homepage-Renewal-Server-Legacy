@@ -6,6 +6,8 @@ import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.RoleResp
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.repository.RoleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -27,5 +29,12 @@ public class RoleService {
         RoleResponseDto roleResponseDto = new RoleResponseDto();
         roleResponseDto.setRoleResponseDto(savedRole);
         return roleResponseDto;
+    }
+
+    public List<RoleResponseDto> findAllRole() {
+        List<Role> found_roles = roleRepository.findAll();
+        return found_roles.stream()
+                .map(data -> data.toRoleResponseDto(data))
+                .collect(Collectors.toList());
     }
 }

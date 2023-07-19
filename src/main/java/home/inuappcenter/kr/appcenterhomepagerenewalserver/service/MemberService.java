@@ -7,6 +7,9 @@ import home.inuappcenter.kr.appcenterhomepagerenewalserver.repository.MemberRepo
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class MemberService {
@@ -27,5 +30,12 @@ public class MemberService {
         MemberResponseDto memberResponseDto = new MemberResponseDto();
         memberResponseDto.setMemberResponseDto(saved_member);
         return memberResponseDto;
+    }
+
+    public List<MemberResponseDto> findAllMember() {
+        List<Member> found_members = memberRepository.findAll();
+        return found_members.stream()
+                .map(data -> data.toMemberResponseDto(data))
+                .collect(Collectors.toList());
     }
 }

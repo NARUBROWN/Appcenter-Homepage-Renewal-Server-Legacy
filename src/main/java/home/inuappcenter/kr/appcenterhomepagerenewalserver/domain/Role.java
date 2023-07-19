@@ -1,6 +1,7 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.domain;
 
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.request.RoleRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.dto.response.RoleResponseDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,5 +24,11 @@ public class Role {
 
     public void setRole(RoleRequestDto roleRequestDto) {
         this.role_name = roleRequestDto.getRole_name();
+    }
+
+    public RoleResponseDto toRoleResponseDto(Role role) {
+        RoleResponseDto roleResponseDto = new RoleResponseDto();
+        roleResponseDto.setRoleResponseDto(role);
+        return roleResponseDto;
     }
 }

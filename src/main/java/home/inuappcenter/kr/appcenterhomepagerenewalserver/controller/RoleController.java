@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/role")
 @AllArgsConstructor
@@ -18,14 +20,21 @@ public class RoleController {
 
     @Operation(summary = "역할 (1개) 가져오기", description = "역할에게 부여된 id를 입력해주세요 / 역할 1개를 반환합니다.")
     @Parameter(name = "id", description = "역할 id", required = true)
-    @GetMapping
+    @GetMapping("getRole")
     public ResponseEntity<RoleResponseDto> getRole(Long id) throws Exception {
         RoleResponseDto roleResponseDto = roleService.getRole(id);
         return ResponseEntity.status(HttpStatus.OK).body(roleResponseDto);
     }
 
+    @Operation(summary = "역할 (전체) 가져오기", description = "전체 역할을 반환합니다.")
+    @GetMapping("/getAllRole")
+    public ResponseEntity<List<RoleResponseDto>> getAllRole() {
+        List<RoleResponseDto> dto_list = roleService.findAllRole();
+        return ResponseEntity.status(HttpStatus.OK).body(dto_list);
+    }
+
     @Operation(summary = "역할 저장", description = "저장할 역할 정보를 입력해주세요 / 역할 1개를 저장합니다.")
-    @PutMapping
+    @PutMapping("/saveRole")
     public ResponseEntity<RoleResponseDto> saveRole(@RequestBody RoleRequestDto roleRequestDto) {
         RoleResponseDto roleResponseDto = roleService.saveRole(roleRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(roleResponseDto);
