@@ -12,10 +12,20 @@ import org.springframework.stereotype.Service;
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    public MemberResponseDto getMember(Long id) throws Exception {
+        Member member = memberRepository.findById(id)
+                .orElseThrow(Exception::new);
+        MemberResponseDto memberResponseDto = new MemberResponseDto();
+        memberResponseDto.setMemberResponseDto(member);
+        return memberResponseDto;
+    }
+
     public MemberResponseDto saveMember(MemberRequestDto memberRequestDto) {
         Member member = new Member();
         member.setMember(memberRequestDto);
         Member saved_member = memberRepository.save(member);
-        return new MemberResponseDto().setMemberResponseDto(saved_member);
+        MemberResponseDto memberResponseDto = new MemberResponseDto();
+        memberResponseDto.setMemberResponseDto(saved_member);
+        return memberResponseDto;
     }
 }

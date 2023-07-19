@@ -11,12 +11,9 @@ public class MemberResponseDto {
     private String name;
     private String description;
 
-    public MemberResponseDto setMemberResponseDto(Member member) {
-        MemberResponseDto memberResponseDto = new MemberResponseDto();
-        memberResponseDto.member_id = member.getMember_id();
-        memberResponseDto.name = member.getName();
-        memberResponseDto.description = member.getDescription();
-
-        return memberResponseDto;
+    public void setMemberResponseDto(Member member) {
+        this.member_id = member.getMember_id();
+        this.name = member.getName();
+        this.description = member.getDescription();
     }
 }
