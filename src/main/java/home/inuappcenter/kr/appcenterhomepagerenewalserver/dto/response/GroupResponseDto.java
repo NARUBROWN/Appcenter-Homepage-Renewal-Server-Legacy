@@ -8,17 +8,25 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class GroupResponseDto {
+public class GroupResponseDto<T> {
     private Long group_id;
-    private Long member_id;
-    private Long role_id;
+    private T member_id;
+    private T role_id;
     private String part;
     private Double year;
 
-    public void setGroupResponseDto(Long member_id, Long role_id, Group group) {
+    public void setGroupResponseDto(T member_id, T role_id, Group group) {
         this.group_id = group.getGroup_id();
         this.member_id = member_id;
         this.role_id = role_id;
+        this.part = group.getPart();
+        this.year = group.getYear();
+    }
+
+    public void setGroupResponseDto(Group group) {
+        this.group_id = group.getGroup_id();
+        this.member_id = (T)group.getMember_id().getName();
+        this.role_id = (T) group.getRole_id().getRole_name();
         this.part = group.getPart();
         this.year = group.getYear();
     }

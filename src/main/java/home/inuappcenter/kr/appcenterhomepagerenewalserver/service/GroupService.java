@@ -18,7 +18,14 @@ public class GroupService {
     private final MemberRepository memberRepository;
     private final RoleRepository roleRepository;
 
-    public GroupResponseDto saveGroup(Long member_id, Long role_id, GroupRequestDto groupRequestDto) throws Exception {
+    public GroupResponseDto<String> getGroup(Long id) throws Exception {
+        Group found_group = groupRepository.findById(id).orElseThrow(Exception::new);
+        GroupResponseDto<String> groupResponseDto = new GroupResponseDto<>();
+        groupResponseDto.setGroupResponseDto(found_group);
+        return groupResponseDto;
+    }
+
+    public GroupResponseDto<Long> saveGroup(Long member_id, Long role_id, GroupRequestDto groupRequestDto) throws Exception {
         Member found_member = memberRepository.findById(member_id).orElseThrow(Exception::new);
         Role found_role = roleRepository.findById(role_id).orElseThrow(Exception::new);
 
@@ -26,7 +33,7 @@ public class GroupService {
         group.setGroup(found_member, found_role, groupRequestDto);
         Group saved_group = groupRepository.save(group);
 
-        GroupResponseDto groupResponseDto = new GroupResponseDto();
+        GroupResponseDto<Long> groupResponseDto = new GroupResponseDto<>();
         groupResponseDto.setGroupResponseDto(member_id, role_id, saved_group);
         return groupResponseDto;
     }
