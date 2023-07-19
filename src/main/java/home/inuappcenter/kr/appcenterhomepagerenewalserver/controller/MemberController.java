@@ -25,7 +25,7 @@ public class MemberController {
     }
 
     @Operation(summary = "동아리원 (1명) 등록하기", description = "등록할 동아리원 정보를 입력해주세요")
-    @Parameter(name = "memberRequestDto", description = "동아리원 정보", required = true)
+    @Parameter(name = "memberRequestDto", description = "동아리원 정보")
     @PutMapping
     public ResponseEntity<MemberResponseDto> saveMember(@RequestBody MemberRequestDto memberRequestDto) {
         MemberResponseDto memberResponseDto = memberService.saveMember(memberRequestDto);

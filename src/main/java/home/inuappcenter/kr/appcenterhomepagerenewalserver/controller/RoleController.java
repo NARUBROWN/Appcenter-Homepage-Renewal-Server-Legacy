@@ -25,7 +25,6 @@ public class RoleController {
     }
 
     @Operation(summary = "역할 저장", description = "저장할 역할 정보를 입력해주세요 / 역할 1개를 저장합니다.")
-    @Parameter(name = "roleRequestDto", description = "역할 정보", required = true)
     @PutMapping
     public ResponseEntity<RoleResponseDto> saveRole(@RequestBody RoleRequestDto roleRequestDto) {
         RoleResponseDto roleResponseDto = roleService.saveRole(roleRequestDto);
