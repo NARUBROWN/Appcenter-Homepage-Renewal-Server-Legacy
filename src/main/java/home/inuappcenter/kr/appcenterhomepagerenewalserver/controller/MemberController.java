@@ -20,14 +20,14 @@ public class MemberController {
 
     @Operation(summary = "동아리원 (1명) 정보 가져오기", description = "동아리원에게 부여된 id를 입력해주세요 / 동아리원(1명)을 반환합니다.")
     @Parameter(name = "id", description = "동아리원 id", required = true)
-    @GetMapping("/getMember")
+    @GetMapping
     public ResponseEntity<MemberResponseDto> getMember(Long id) throws Exception {
         MemberResponseDto memberResponseDto = memberService.getMember(id);
         return ResponseEntity.status(HttpStatus.OK).body(memberResponseDto);
     }
 
     @Operation(summary = "동아리원 (전체) 정보 가져오기", description = "전체 동아리원을 반환합니다.")
-    @GetMapping("/getMemberList")
+    @GetMapping("/all-members")
     public ResponseEntity<List<MemberResponseDto>> findAllMember() {
         List<MemberResponseDto> dto_list = memberService.findAllMember();
         return ResponseEntity.status(HttpStatus.OK).body(dto_list);
@@ -35,7 +35,7 @@ public class MemberController {
 
     @Operation(summary = "동아리원 (1명) 등록하기", description = "등록할 동아리원 정보를 입력해주세요")
     @Parameter(name = "memberRequestDto", description = "동아리원 정보")
-    @PutMapping
+    @PostMapping
     public ResponseEntity<MemberResponseDto> saveMember(@RequestBody MemberRequestDto memberRequestDto) {
         MemberResponseDto memberResponseDto = memberService.saveMember(memberRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(memberResponseDto);
