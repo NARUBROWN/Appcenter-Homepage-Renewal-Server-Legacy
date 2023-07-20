@@ -32,6 +32,15 @@ public class RoleService {
         return roleResponseDto;
     }
 
+    public RoleResponseDto updateRole(Long id, RoleRequestDto roleRequestDto) throws Exception {
+        Role found_role = roleRepository.findById(id).orElseThrow(Exception::new);
+        found_role.setRole(id, roleRequestDto);
+        Role update_role = roleRepository.save(found_role);
+        RoleResponseDto roleResponseDto = new RoleResponseDto();
+        roleResponseDto.setRoleResponseDto(update_role);
+        return roleResponseDto;
+    }
+
     public List<RoleResponseDto> findAllRole() {
         List<Role> found_roles = roleRepository.findAll();
         return found_roles.stream()

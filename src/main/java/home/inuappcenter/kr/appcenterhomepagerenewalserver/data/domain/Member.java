@@ -29,6 +29,12 @@ public class Member {
         this.description = memberRequestDto.getDescription();
     }
 
+    public void setMember(Long id, MemberRequestDto memberRequestDto) {
+        this.member_id = id;
+        this.name = memberRequestDto.getName();
+        this.description = memberRequestDto.getDescription();
+    }
+
     public MemberResponseDto toMemberResponseDto(Member member) {
         MemberResponseDto memberResponseDto = new MemberResponseDto();
         memberResponseDto.setMemberResponseDto(member);

@@ -26,6 +26,11 @@ public class Role {
         this.role_name = roleRequestDto.getRole_name();
     }
 
+    public void setRole(Long id, RoleRequestDto roleRequestDto) {
+        this.role_id = id;
+        this.role_name = roleRequestDto.getRole_name();
+    }
+
     public RoleResponseDto toRoleResponseDto(Role role) {
         RoleResponseDto roleResponseDto = new RoleResponseDto();
         roleResponseDto.setRoleResponseDto(role);

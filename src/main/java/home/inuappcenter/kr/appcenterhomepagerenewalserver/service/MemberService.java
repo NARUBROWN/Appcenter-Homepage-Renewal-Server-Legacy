@@ -33,6 +33,15 @@ public class MemberService {
         return memberResponseDto;
     }
 
+    public MemberResponseDto updateMember(Long id, MemberRequestDto memberRequestDto) throws Exception {
+        Member found_member = memberRepository.findById(id).orElseThrow(Exception::new);
+        found_member.setMember(id, memberRequestDto);
+        Member saved_member = memberRepository.save(found_member);
+        MemberResponseDto memberResponseDto = new MemberResponseDto();
+        memberResponseDto.setMemberResponseDto(saved_member);
+        return memberResponseDto;
+    }
+
     public List<MemberResponseDto> findAllMember() {
         List<Member> found_members = memberRepository.findAll();
         return found_members.stream()
