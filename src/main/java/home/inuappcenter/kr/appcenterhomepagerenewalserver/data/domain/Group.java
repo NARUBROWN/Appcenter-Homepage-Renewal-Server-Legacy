@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "appcenter_group")
 public class Group {
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long group_id;
 
