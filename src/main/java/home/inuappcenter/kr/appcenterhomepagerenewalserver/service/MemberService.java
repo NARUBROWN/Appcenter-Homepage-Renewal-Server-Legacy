@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+    private final GroupService groupService;
 
     public MemberResponseDto getMember(Long id) throws Exception {
         Member member = memberRepository.findById(id)
@@ -37,5 +38,15 @@ public class MemberService {
         return found_members.stream()
                 .map(data -> data.toMemberResponseDto(data))
                 .collect(Collectors.toList());
+    }
+
+    public String deleteMember(Long id) throws Exception {
+        Member found_member = memberRepository.findById(id).orElseThrow(Exception::new);
+        if(!groupService.findMember(found_member)) {
+            memberRepository.deleteById(id);
+            return "member id ["+ id + "] has been deleted.";
+        } else {
+            return "The member [" + id + "] is part of a Group. Please delete the Group first";
+        }
     }
 }

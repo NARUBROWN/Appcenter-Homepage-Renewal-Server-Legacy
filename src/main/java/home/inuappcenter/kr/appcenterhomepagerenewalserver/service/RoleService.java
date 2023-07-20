@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class RoleService {
 
     private final RoleRepository roleRepository;
+    private final GroupService groupService;
 
     public RoleResponseDto getRole(Long id) throws Exception {
         Role getRole = roleRepository.findById(id).orElseThrow(Exception::new);
@@ -36,5 +37,15 @@ public class RoleService {
         return found_roles.stream()
                 .map(data -> data.toRoleResponseDto(data))
                 .collect(Collectors.toList());
+    }
+
+    public String deleteRole(Long id) throws Exception {
+        Role found_role = roleRepository.findById(id).orElseThrow(Exception::new);
+        if(!groupService.findRole(found_role)) {
+            roleRepository.deleteById(id);
+            return "role id ["+ id + "] has been deleted.";
+        } else {
+            return "The role [" + id + "] is part of a Group. Please delete the Group first";
+        }
     }
 }

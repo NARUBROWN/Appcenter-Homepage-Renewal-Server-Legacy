@@ -20,12 +20,12 @@ public class Group {
     @ManyToOne
     @NotNull
     @JoinColumn(name = "member_id")
-    private Member member_id;
+    private Member member;
 
     @ManyToOne
     @NotNull
     @JoinColumn(name = "role_id")
-    private Role role_id;
+    private Role role;
 
     @NotNull
     private String part;
@@ -34,8 +34,8 @@ public class Group {
     private Double year;
 
     public void setGroup(Member member, Role role, GroupRequestDto groupRequestDto) {
-        this.member_id = member;
-        this.role_id = role;
+        this.member = member;
+        this.role = role;
         this.part = groupRequestDto.getPart();
         this.year = groupRequestDto.getYear();
     }

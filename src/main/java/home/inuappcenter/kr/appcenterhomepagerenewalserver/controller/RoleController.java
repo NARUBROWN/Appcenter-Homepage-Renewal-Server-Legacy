@@ -43,4 +43,11 @@ public class RoleController {
 
     // 삭제 API
     // 그룹에서 사용되지 않은 역할만 삭제 가능하도록 로직 구성
+    @Operation(summary = "역할 (1개) 삭제", description = "역할 삭제 / 역할이 그룹에 등록되어 있으면 삭제되지 않습니다.")
+    @Parameter(name = "id", description = "역할 id")
+    @DeleteMapping
+    public ResponseEntity<String> deleteMember(Long id) throws Exception {
+        String result = roleService.deleteRole(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
 }

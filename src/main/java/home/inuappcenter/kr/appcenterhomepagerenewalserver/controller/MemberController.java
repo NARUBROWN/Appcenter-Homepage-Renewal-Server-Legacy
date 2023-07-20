@@ -43,5 +43,12 @@ public class MemberController {
 
     // 삭제 API 필요
     // 그룹에 등록되어 있는지 확인 후, 등록 안되어 있는 경우에만 삭제처리 하게끔 구현
+    @Operation(summary = "동아리원 (1명) 삭제하기", description = "동아리원 삭제 / 동아리원이 그룹에 등록되어 있으면 삭제되지 않습니다.")
+    @Parameter(name = "id", description = "동아리원 id")
+    @DeleteMapping
+    public ResponseEntity<String> deleteMember(Long id) throws Exception {
+        String result = memberService.deleteMember(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
 
 }
