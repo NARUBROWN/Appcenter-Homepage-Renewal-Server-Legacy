@@ -42,7 +42,7 @@ DELETE /groups: 그룹 멤버 (1명) 삭제하기 / 동아리원이 그룹에 �
 GET /groups/all-groups-members: 동아리원 (전체) 가져오기
 
 <h3> introduction-board-controller (/introduction-boards) </h3>
-그룹 컨트롤러: 동아리 내 그룹(조직)을 관리합니다. 기수, 멤버, 역할... 같은 정보를 저장하고 관리합니다.<br>
+앱 소개 게시판 컨트롤러: 앱센터에서 만들어진 애플리케이션을 소개하는 게시판을 위한 컨트롤러입니다.<br>
 
 **⚠️예정 GET /introduction-boards: 게시글 (1개) 조회하기**
 
@@ -55,7 +55,7 @@ GET /groups/all-groups-members: 동아리원 (전체) 가져오기
 **⚠️예정 GET /introduction-boards/all-introduction-boards : 게시글 (전체) 가져오기**
 
 <h3> photo-board-controller (/photo-boards) </h3>
-그룹 컨트롤러: 동아리 내 그룹(조직)을 관리합니다. 기수, 멤버, 역할... 같은 정보를 저장하고 관리합니다.<br>
+사진 게시판 컨트롤러: 사진 게시판을 위한 컨트롤러입니다.<br>
 
 **⚠️예정 GET /photo-boards: 게시글 (1개) 조회하기**
 
@@ -66,6 +66,25 @@ GET /groups/all-groups-members: 동아리원 (전체) 가져오기
 **⚠️예정 PATCH /photo-boards: 게시글 (1개) 수정하기**
 
 **⚠️예정 GET /photo-boards/all-photo-boards : 게시글 (전체) 가져오기**
+
+<h3> faq-board-controller (/faq-boards) </h3>
+FAQ 게시판 컨트롤러: FAQ 게시판을 위한 컨트롤러입니다.<br>
+
+**⚠️예정 GET /faq-boards: 게시글 (1개) 조회하기**
+
+**⚠️예정 POST /faq-boards: 게시글 (1개) 등록하기**
+
+**⚠️예정 DELETE /faq-boards: 게시글 (1개) 삭제하기**
+
+**⚠️예정 PATCH /faq-boards: 게시글 (1개) 수정하기**
+
+**⚠️예정 GET /faq-boards/all-faq-boards : 게시글 (전체) 가져오기**
+
+
+<h3> sign-controller (/sign) </h3>
+로그인 컨트롤러: 관리자 권한으로 로그인하기 위한 컨트롤러입니다. / 회원가입은 제공되지 않습니다. <br>
+
+**⚠️예정 GET /sign: 로그인**
 
 
 <h2>⚠️ 참고 아티클 </h2>
