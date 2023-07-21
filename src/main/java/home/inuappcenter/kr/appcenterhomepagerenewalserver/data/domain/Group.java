@@ -3,7 +3,6 @@ package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.GroupRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.GroupResponseDto;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,19 +16,15 @@ public class Group {
     private Long group_id;
 
     @ManyToOne
-    @NotNull
     @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne
-    @NotNull
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @NotNull
     private String part;
 
-    @NotNull
     private Double year;
 
     public void setGroup(Member member, Role role, GroupRequestDto groupRequestDto) {

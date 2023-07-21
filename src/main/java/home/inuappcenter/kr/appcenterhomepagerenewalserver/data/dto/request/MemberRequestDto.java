@@ -8,4 +8,8 @@ import lombok.NoArgsConstructor;
 public class MemberRequestDto {
     private String name;
     private String description;
+    private String profileImage;
+    private String blogLink;
+    private String email;
+    private String gitRepositoryLink;
 }
