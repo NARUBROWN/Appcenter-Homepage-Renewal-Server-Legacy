@@ -21,6 +21,23 @@ public class PhotoBoardService {
     private final PhotoBoardRepository photoBoardRepository;
     private final ImageRepository imageRepository;
     private final HttpServletRequest request;
+
+    public BoardResponseDto<List<String>> getBoard(Long id) {
+        PhotoBoard foundBoard = photoBoardRepository.findById(id).orElseThrow();
+
+        List<Image> ImageList = foundBoard.getImages();
+
+        List<String> images = new ArrayList<>();
+
+        for(Image image: ImageList) {
+            images.add(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() +  "/image/photo/" + image.getId().toString());
+        }
+
+        BoardResponseDto<List<String>> boardResponseDto = new BoardResponseDto<>();
+        boardResponseDto.setBoardResponse(foundBoard, images);
+        return boardResponseDto;
+    }
+
     // 게시글 저장하기
     public BoardResponseDto<List<Long>> saveBoard(BoardRequestDto boardRequestDto, ImageRequestDto imageRequestDto) throws IOException {
         PhotoBoard photoBoard = new PhotoBoard();
@@ -46,19 +63,18 @@ public class PhotoBoardService {
         return boardResponseDto;
     }
 
-    public BoardResponseDto<List<String>> getBoard(Long id) {
+    public String deleteBoard(Long id) {
         PhotoBoard foundBoard = photoBoardRepository.findById(id).orElseThrow();
 
         List<Image> ImageList = foundBoard.getImages();
 
-        List<String> images = new ArrayList<>();
-
+        // 등록된 이미지 먼저 삭제
         for(Image image: ImageList) {
-            images.add(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() +  "/image/photo/" + image.getId().toString());
+            imageRepository.deleteById(image.getId());
         }
+        // 게시글 삭제
+        photoBoardRepository.deleteById(id);
 
-        BoardResponseDto<List<String>> boardResponseDto = new BoardResponseDto<>();
-        boardResponseDto.setBoardResponse(foundBoard, images);
-        return boardResponseDto;
+        return "id: " + id + " has been successfully deleted.";
     }
 }

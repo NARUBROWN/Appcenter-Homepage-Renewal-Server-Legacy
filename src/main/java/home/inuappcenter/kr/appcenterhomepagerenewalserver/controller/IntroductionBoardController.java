@@ -21,6 +21,12 @@ public class IntroductionBoardController {
 
     public final IntroBoardService introBoardService;
 
+    @GetMapping
+    public ResponseEntity<BoardResponseDto<List<String>>> getBoard(Long id) {
+        BoardResponseDto<List<String>> boardResponseDto = introBoardService.getBoard(id);
+        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    }
+
     @PostMapping(consumes = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.MULTIPART_FORM_DATA_VALUE
@@ -34,10 +40,12 @@ public class IntroductionBoardController {
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
 
-    @GetMapping
-    public ResponseEntity<BoardResponseDto<List<String>>> getBoard(Long id) {
-        BoardResponseDto<List<String>> boardResponseDto = introBoardService.getBoard(id);
-        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    @DeleteMapping
+    public ResponseEntity<String> deleteBoard(Long id) {
+        String result = introBoardService.deleteBoard(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+
 }
 

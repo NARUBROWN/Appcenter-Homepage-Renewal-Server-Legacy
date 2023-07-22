@@ -20,6 +20,13 @@ import java.util.List;
 public class PhotoBoardController {
     private final PhotoBoardService photoBoardService;
 
+    @GetMapping
+    public ResponseEntity<BoardResponseDto<List<String>>> getBoard(Long id) {
+        BoardResponseDto<List<String>> boardResponseDto = photoBoardService.getBoard(id);
+        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    }
+
+
     @PostMapping(consumes = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.MULTIPART_FORM_DATA_VALUE
@@ -33,10 +40,11 @@ public class PhotoBoardController {
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
 
-    @GetMapping
-    public ResponseEntity<BoardResponseDto<List<String>>> getBoard(Long id) {
-        BoardResponseDto<List<String>> boardResponseDto = photoBoardService.getBoard(id);
-        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    @DeleteMapping
+    public ResponseEntity<String> deleteBoard(Long id) {
+        String result = photoBoardService.deleteBoard(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
 }
 
