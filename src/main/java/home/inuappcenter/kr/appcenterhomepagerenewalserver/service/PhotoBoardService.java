@@ -1,12 +1,12 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.service;
 
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.Image;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.IntroBoard;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.ImageRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.PhotoBoard;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.BoardRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.ImageRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.BoardResponseDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.ImageRepository;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.IntroBoardRepository;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.PhotoBoardRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,22 +17,21 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class IntroBoardService {
-    private final IntroBoardRepository introBoardRepository;
+public class PhotoBoardService {
+    private final PhotoBoardRepository photoBoardRepository;
     private final ImageRepository imageRepository;
     private final HttpServletRequest request;
     // 게시글 저장하기
     public BoardResponseDto<List<Long>> saveBoard(BoardRequestDto boardRequestDto, ImageRequestDto imageRequestDto) throws IOException {
-        IntroBoard introBoard = new IntroBoard();
+        PhotoBoard photoBoard = new PhotoBoard();
         // imageRequestDto를 List<Image> 타입으로 변환 / 게시판 정보도 함께 포함해서 저장시킴
-        List<Image> imageList = new Image().toList(imageRequestDto, introBoard);
+        List<Image> imageList = new Image().toList(imageRequestDto, photoBoard);
 
         // introBoardRequestDto를 introBoard 타입으로 변환
-        introBoard.setIntroBoard(boardRequestDto);
+        photoBoard.setPhotoBoard(boardRequestDto);
 
         // introBoard를 저장
-        introBoardRepository.save(introBoard);
-
+        photoBoardRepository.save(photoBoard);
 
         List<Image> savedImage = imageRepository.saveAll(imageList);
 
@@ -43,12 +42,12 @@ public class IntroBoardService {
         }
 
         BoardResponseDto<List<Long>> boardResponseDto = new BoardResponseDto<>();
-        boardResponseDto.setBoardResponse(introBoard, imageIds);
+        boardResponseDto.setBoardResponse(photoBoard, imageIds);
         return boardResponseDto;
     }
 
     public BoardResponseDto<List<String>> getBoard(Long id) {
-        IntroBoard foundBoard = introBoardRepository.findById(id).orElseThrow();
+        PhotoBoard foundBoard = photoBoardRepository.findById(id).orElseThrow();
 
         List<Image> ImageList = foundBoard.getImages();
 

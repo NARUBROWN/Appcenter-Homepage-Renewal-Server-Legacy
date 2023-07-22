@@ -22,8 +22,12 @@ public class Image {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "introduction_board_id")
-    private IntroBoard introductionBoard;
+    @JoinColumn(name = "intro_board_id")
+    private IntroBoard introBoard;
+
+    @ManyToOne
+    @JoinColumn(name = "photo_board_id")
+    private PhotoBoard photoBoard ;
 
     @Column(name = "original_file_name")
     private String originalFileName;
@@ -38,13 +42,33 @@ public class Image {
         this.originalFileName = originalFileName;
         this.imageData = ImageUtils.compressImage(imageData);
         this.fileSize = fileSize;
-        this.introductionBoard = introBoard;
+        this.introBoard = introBoard;
+    }
+
+    public Image(String originalFileName, byte[] imageData, Long fileSize, PhotoBoard photoBoard) {
+        this.originalFileName = originalFileName;
+        this.imageData = ImageUtils.compressImage(imageData);
+        this.fileSize = fileSize;
+        this.photoBoard = photoBoard;
+    }
+
+    public List<Image> makeNewList() {
+        return new ArrayList<>();
     }
 
     public List<Image> toList(ImageRequestDto imageRequestDto, IntroBoard introBoard) throws IOException {
-        List<Image> imageList = new ArrayList<>();
+        List<Image> imageList = this.makeNewList();
         for (MultipartFile file: imageRequestDto.getMultipartFileList()) {
             Image image = new Image(file.getOriginalFilename(), file.getBytes(), file.getSize(), introBoard);
+            imageList.add(image);
+        }
+        return imageList;
+    }
+
+    public List<Image> toList(ImageRequestDto imageRequestDto, PhotoBoard photoBoard) throws IOException {
+        List<Image> imageList = this.makeNewList();
+        for (MultipartFile file: imageRequestDto.getMultipartFileList()) {
+            Image image = new Image(file.getOriginalFilename(), file.getBytes(), file.getSize(), photoBoard);
             imageList.add(image);
         }
         return imageList;

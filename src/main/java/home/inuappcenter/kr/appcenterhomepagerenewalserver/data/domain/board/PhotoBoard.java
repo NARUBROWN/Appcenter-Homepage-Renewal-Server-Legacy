@@ -11,18 +11,18 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "introduction_board")
-public class IntroBoard extends Board{
+@Table(name = "photo_board")
+public class PhotoBoard extends Board{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long introduction_board_id;
+    private Long photo_board_id;
 
     private String body;
 
-    @OneToMany(mappedBy = "introBoard")
+    @OneToMany(mappedBy = "photoBoard")
     private List<Image> Images = new ArrayList<>();
 
-    public void setIntroBoard(BoardRequestDto boardRequestDto) {
+    public void setPhotoBoard(BoardRequestDto boardRequestDto) {
         this.body = boardRequestDto.getBoard();
     }
 }

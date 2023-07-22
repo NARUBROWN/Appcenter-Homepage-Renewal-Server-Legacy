@@ -5,6 +5,6 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class IntroBoardRequestDto {
+public class BoardRequestDto {
     String board;
 }
