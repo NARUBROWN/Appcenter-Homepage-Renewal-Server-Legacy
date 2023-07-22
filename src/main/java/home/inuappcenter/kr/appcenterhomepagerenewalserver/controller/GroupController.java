@@ -4,6 +4,8 @@ import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.Grou
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.GroupResponseDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.service.GroupService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,24 +33,24 @@ public class GroupController {
         return ResponseEntity.status(HttpStatus.OK).body(dto_list);
     }
 
-    // 등록 시 String 멤버 이름, String 파트 이름을 받도록 하는게 편할 것 같음
-    // 예상되는 문제: 중복처리
     @Operation(summary = "그룹 멤버 (1명) 편성", description = "저장할 member_id(멤버)와 role_id(역할)을 입력해주세요")
+    @Parameters({
+            @Parameter(name = "part", description = "파트"),
+            @Parameter(name = "year", description = "기수"),
+            @Parameter(name = "member_id", description = "멤버 ID"),
+            @Parameter(name = "role_id", description = "역할 ID")
+    })
     @PostMapping
     public ResponseEntity<GroupResponseDto> assignGroup(@RequestBody GroupRequestDto groupRequestDto, Long member_id, Long role_id) throws Exception {
             GroupResponseDto groupResponseDto = groupService.assignGroup(member_id, role_id, groupRequestDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(groupResponseDto);
     }
 
-    // 파트 / 기수별로 조회해주는 API 필요
-    // 서버 파트 + 14기.. 는 {..., ..., ...}
-
-    // 삭제 API 필요
-    // 그룹 삭제 후 멤버 삭제가 이뤄져야 하기 때문에 신경써서 로직 구현해야됨
     @Operation(summary = "그룹 멤버 (1명) 삭제", description = "삭제할 Group id를 입력해주세요")
+    @Parameter(name = "group_id", description = "그룹 ID")
     @DeleteMapping
-    public ResponseEntity<String> deleteGroup(Long id) {
-        String result = groupService.deleteGroup(id);
+    public ResponseEntity<String> deleteGroup(Long group_id) {
+        String result = groupService.deleteGroup(group_id);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 

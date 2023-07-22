@@ -1,6 +1,6 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request;
 
-import jakarta.validation.constraints.Max;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -9,11 +9,18 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class GroupRequestDto {
+    @Schema(
+            example = "서버",
+            description = "파트 중 하나"
+    )
     @NotBlank
     private String part;
 
+    @Schema(
+            example = "14",
+            description = "기수"
+    )
     @NotBlank
     @Min(value = 13)
-    @Max(value = 20)
     private Double year;
 }
