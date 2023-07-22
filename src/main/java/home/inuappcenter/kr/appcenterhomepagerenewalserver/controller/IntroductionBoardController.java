@@ -25,7 +25,7 @@ public class IntroductionBoardController {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.MULTIPART_FORM_DATA_VALUE
     })
-    public ResponseEntity<IntroBoardResponseDto<List<Long>>> uploadImageToFileSystem(@RequestPart(value = "multipartFileList", required = false) List<MultipartFile> multipartFileList,
+    public ResponseEntity<IntroBoardResponseDto<List<Long>>> saveBoard(@RequestPart(value = "multipartFileList", required = false) List<MultipartFile> multipartFileList,
                                                                          @RequestPart(value = "introBoardRequestDto") IntroBoardRequestDto introBoardRequestDto ) throws IOException {
 
         ImageRequestDto imageRequestDto = new ImageRequestDto(multipartFileList);
