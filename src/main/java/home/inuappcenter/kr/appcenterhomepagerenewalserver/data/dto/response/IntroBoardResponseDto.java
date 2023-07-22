@@ -4,18 +4,16 @@ import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.Int
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Getter
 @NoArgsConstructor
-public class IntroBoardResponseDto {
+public class IntroBoardResponseDto<T> {
     private Long introBoard_id;
     private String body;
-    private List<Long> images;
+    private T images;
 
-    public void setIntroBoardResponse(IntroBoard introBoard, List<Long> ids) {
+    public void setIntroBoardResponse(IntroBoard introBoard, T images) {
         this.introBoard_id = introBoard.getIntroduction_board_id();
         this.body = introBoard.getBody();
-        this.images = ids;
+        this.images = images;
     }
 }

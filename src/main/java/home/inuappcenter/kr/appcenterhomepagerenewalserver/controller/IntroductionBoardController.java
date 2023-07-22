@@ -25,18 +25,18 @@ public class IntroductionBoardController {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.MULTIPART_FORM_DATA_VALUE
     })
-    public ResponseEntity<IntroBoardResponseDto> uploadImageToFileSystem(@RequestPart(value = "multipartFileList", required = false) List<MultipartFile> multipartFileList,
+    public ResponseEntity<IntroBoardResponseDto<List<Long>>> uploadImageToFileSystem(@RequestPart(value = "multipartFileList", required = false) List<MultipartFile> multipartFileList,
                                                                          @RequestPart(value = "introBoardRequestDto") IntroBoardRequestDto introBoardRequestDto ) throws IOException {
 
         ImageRequestDto imageRequestDto = new ImageRequestDto(multipartFileList);
-        IntroBoardResponseDto introBoardResponseDto = introBoardService.saveBoard(introBoardRequestDto, imageRequestDto);
+        IntroBoardResponseDto<List<Long>> introBoardResponseDto = introBoardService.saveBoard(introBoardRequestDto, imageRequestDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(introBoardResponseDto);
     }
 
     @GetMapping
-    public ResponseEntity<IntroBoardResponseDto> getBoard(Long id) {
-        IntroBoardResponseDto introBoardResponseDto = introBoardService.getBoard(id);
+    public ResponseEntity<IntroBoardResponseDto<List<String>>> getBoard(Long id) {
+        IntroBoardResponseDto<List<String>> introBoardResponseDto = introBoardService.getBoard(id);
         return ResponseEntity.status(HttpStatus.OK).body(introBoardResponseDto);
     }
 }
