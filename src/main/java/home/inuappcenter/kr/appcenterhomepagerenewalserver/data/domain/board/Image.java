@@ -2,9 +2,8 @@ package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board;
 
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.ImageRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.utils.ImageUtils;
-import jakarta.persistence.*;
-import jakarta.servlet.http.HttpServletRequest;
-import lombok.AllArgsConstructor;
+import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;

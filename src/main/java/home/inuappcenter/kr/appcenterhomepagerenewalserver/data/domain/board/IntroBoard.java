@@ -1,10 +1,8 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Group;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.BoardRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.BoardResponseDto;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.GroupResponseDto;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

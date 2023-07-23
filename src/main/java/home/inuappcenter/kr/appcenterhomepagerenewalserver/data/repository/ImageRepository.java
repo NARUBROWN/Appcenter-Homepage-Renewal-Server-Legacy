@@ -1,7 +1,5 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository;
 
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Group;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Member;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.Image;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.IntroBoard;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.PhotoBoard;

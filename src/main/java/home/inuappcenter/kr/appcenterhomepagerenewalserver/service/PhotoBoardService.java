@@ -1,14 +1,13 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.service;
 
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.Image;
-import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.IntroBoard;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.PhotoBoard;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.BoardRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.ImageRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.BoardResponseDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.ImageRepository;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.PhotoBoardRepository;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

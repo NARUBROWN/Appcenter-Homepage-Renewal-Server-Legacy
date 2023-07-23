@@ -7,7 +7,7 @@ import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.Boar
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.BoardResponseDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.ImageRepository;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.repository.IntroBoardRepository;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
