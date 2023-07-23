@@ -52,7 +52,7 @@ DELETE /introduction-boards: 게시글 (1개) 삭제하기
 
 **⚠️예정 PATCH /introduction-boards: 게시글 (1개) 수정하기**
 
-**⚠️예정 GET /introduction-boards/all-introduction-boards : 게시글 (전체) 가져오기**
+GET /introduction-boards/all-introduction-boards : 게시글 (전체) 가져오기
 
 <h3> photo-board-controller (/photo-boards) </h3>
 사진 게시판 컨트롤러: 사진 게시판을 위한 컨트롤러입니다.<br>
@@ -65,7 +65,7 @@ DELETE /introduction-boards: 게시글 (1개) 삭제하기
 
 **⚠️예정 PATCH /photo-boards: 게시글 (1개) 수정하기**
 
-**⚠️예정 GET /photo-boards/all-photo-boards : 게시글 (전체) 가져오기**
+예정 GET /photo-boards/all-photo-boards : 게시글 (전체) 가져오기
 
 <h3> faq-board-controller (/faq-boards) </h3>
 FAQ 게시판 컨트롤러: FAQ 게시판을 위한 컨트롤러입니다.<br>
