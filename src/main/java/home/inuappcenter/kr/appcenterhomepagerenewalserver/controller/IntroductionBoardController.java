@@ -1,5 +1,6 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.controller;
 
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.GroupRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.ImageRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.BoardRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.BoardResponseDto;
@@ -32,7 +33,7 @@ public class IntroductionBoardController {
         return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
     }
 
-    @Operation(summary = "게시글 (1개) 저장하기", description = "스웨거에서는 작동하지 않는 액션입니다.")
+    @Operation(summary = "게시글 (1개) 저장하기", description = "스웨거에서 작동하지 않는 액션 입니다. / 포스트맨을 사용해주세요")
     @PostMapping(consumes = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.MULTIPART_FORM_DATA_VALUE
@@ -60,6 +61,18 @@ public class IntroductionBoardController {
         List<BoardResponseDto<String>> dto_list = introBoardService.findAllBoard();
         return ResponseEntity.status(HttpStatus.OK).body(dto_list);
     }
+
+    @Operation(summary = "게시글 (1개) 수정", description = "스웨거에서 작동하지 않는 액션 입니다. / 포스트맨을 사용해주세요")
+    @Parameter(name = "board_id", description = "그룹 ID")
+    @PatchMapping
+    public ResponseEntity<BoardResponseDto<List<Long>>> updateBoard(@RequestPart(value = "introBoardRequestDto", required = false) BoardRequestDto boardRequestDto,
+                                         @RequestPart(value ="board_id") Long board_id) throws Exception {
+        BoardResponseDto<List<Long>> boardResponseDto = introBoardService.updateBoard(boardRequestDto, board_id);
+        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+    }
+
+
+
 
 
 }

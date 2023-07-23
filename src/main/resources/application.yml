@@ -8,6 +8,10 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: 'true'
+  servlet:
+    multipart:
+      maxFileSize: 500MB
+      maxRequestSize: 500MB
 springboot:
   jwt:
     secret: flature!@#flature!@#flature!@#flature!@#flature!@#flature!@#

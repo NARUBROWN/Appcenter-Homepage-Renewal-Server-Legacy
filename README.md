@@ -50,7 +50,7 @@ GET /introduction-boards: 게시글 (1개) 조회하기
 
 DELETE /introduction-boards: 게시글 (1개) 삭제하기
 
-**⚠️예정 PATCH /introduction-boards: 게시글 (1개) 수정하기**
+PATCH /introduction-boards: 게시글 (1개) 수정하기
 
 GET /introduction-boards/all-introduction-boards : 게시글 (전체) 가져오기
 
@@ -84,6 +84,8 @@ FAQ 게시판 컨트롤러: FAQ 게시판을 위한 컨트롤러입니다.<br>
 이미지 컨트롤러: 업로드 된 이미지에 접근할 수 있는 URL을 제공하는 컨트롤러 입니다.<br>
 
 예정 GET /photo/{id}: 사진 (1개) 조회하기
+
+**⚠️예정 PATCH /photo/{id}: 게시글 (1개) 수정하기**
 
 <h3> sign-controller (/sign) </h3>
 로그인 컨트롤러: 관리자 권한으로 로그인하기 위한 컨트롤러입니다. / 회원가입은 제공되지 않습니다. <br>

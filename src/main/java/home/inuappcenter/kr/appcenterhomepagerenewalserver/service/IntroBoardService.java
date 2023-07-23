@@ -43,11 +43,11 @@ public class IntroBoardService {
     // 게시글 저장하기
     public BoardResponseDto<List<Long>> saveBoard(BoardRequestDto boardRequestDto, ImageRequestDto imageRequestDto) throws IOException {
         IntroBoard introBoard = new IntroBoard();
-        // imageRequestDto를 List<Image> 타입으로 변환 / 게시판 정보도 함께 포함해서 저장시킴
-        List<Image> imageList = new Image().toList(imageRequestDto, introBoard);
-
         // introBoardRequestDto를 introBoard 타입으로 변환
         introBoard.setIntroBoard(boardRequestDto);
+
+        // imageRequestDto를 List<Image> 타입으로 변환 / 게시판 정보도 함께 포함해서 저장시킴
+        List<Image> imageList = new Image().toList(imageRequestDto, introBoard);
 
         // introBoard를 저장
         introBoardRepository.save(introBoard);
@@ -60,6 +60,32 @@ public class IntroBoardService {
         List<Long> imageIds = new ArrayList<>();
 
         for(Image image: savedImage) {
+            imageIds.add(image.getId());
+        }
+
+        BoardResponseDto<List<Long>> boardResponseDto = new BoardResponseDto<>();
+        boardResponseDto.setBoardResponse(introBoard, imageIds);
+        return boardResponseDto;
+    }
+
+    // 게시글 수정
+    public BoardResponseDto<List<Long>> updateBoard(BoardRequestDto boardRequestDto, Long board_id) throws Exception {
+        // 보드 찾아오기
+        IntroBoard foundBoard = introBoardRepository.findById(board_id).orElseThrow(Exception::new);
+
+        foundBoard.setIntroBoard(boardRequestDto);
+
+        // 찾은 보드에 새로운 정보를 기입해줌
+        foundBoard.setIntroBoard(boardRequestDto);
+        // introBoard를 저장
+        IntroBoard introBoard = introBoardRepository.save(foundBoard);
+
+        // 이미지 묶음 찾아오기 1. 게시판에 등록된 외래키 가져와서 2. 외래키로 imageRepository에서 find
+        List<Image> foundImageList = imageRepository.findAllByIntroBoard(foundBoard);
+
+        List<Long> imageIds = new ArrayList<>();
+
+        for(Image image: foundImageList) {
             imageIds.add(image.getId());
         }
 

@@ -23,4 +23,9 @@ public class BoardResponseDto<T> {
         this.body = photoBoard.getBody();
         this.images = images;
     }
+
+    public void setBoardResponse(IntroBoard introBoard) {
+        this.board_id = introBoard.getIntroduction_board_id();
+        this.body = introBoard.getBody();
+    }
 }
