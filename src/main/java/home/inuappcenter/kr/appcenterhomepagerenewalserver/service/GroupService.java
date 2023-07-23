@@ -48,6 +48,18 @@ public class GroupService {
         return groupResponseDto;
     }
 
+    public GroupResponseDto updateGroup(GroupRequestDto groupRequestDto, Long id) throws Exception {
+        // 여기서 외래키까지 다 변경할 수 있게 하려고 했는데, 과한듯
+        // 그룹 객체 찾기
+        Group foundGroup = groupRepository.findById(id).orElseThrow(Exception::new);
+        foundGroup.setGroup(id, groupRequestDto);
+        Group savedGroup = groupRepository.save(foundGroup);
+
+        GroupResponseDto groupResponseDto = new GroupResponseDto();
+        groupResponseDto.setGroupResponseDto(savedGroup);
+        return groupResponseDto;
+    }
+
     // 멤버 찾기
     public boolean findMember(Member member) {
         Group found_member = groupRepository.getByMember(member);

@@ -1,6 +1,7 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.service;
 
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.Image;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.IntroBoard;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board.PhotoBoard;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.BoardRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.ImageRequestDto;
@@ -50,6 +51,9 @@ public class PhotoBoardService {
         // introBoard를 저장
         photoBoardRepository.save(photoBoard);
 
+        // 첫번째 이미지는 isThumbnail을 true로 변경
+        imageList.get(0).isThumbnail();
+
         List<Image> savedImage = imageRepository.saveAll(imageList);
 
         List<Long> imageIds = new ArrayList<>();
@@ -76,5 +80,17 @@ public class PhotoBoardService {
         photoBoardRepository.deleteById(id);
 
         return "id: " + id + " has been successfully deleted.";
+    }
+
+    public List<BoardResponseDto<String>> findAllBoard() {
+        List<PhotoBoard> boardList = photoBoardRepository.findAll();
+        List<Image> thumbnailList = imageRepository.findAllByIsThumbnailTrue();
+
+        List<BoardResponseDto<String>> boardResponseDtoList = new ArrayList<>();
+        for(int i=0; i<=boardList.size()-1; i++) {
+            boardResponseDtoList.add(boardList.get(i).toBoardResponseDto(boardList.get(i), thumbnailList.get(i).getLocation(request, thumbnailList.get(i))));
+        }
+
+        return boardResponseDtoList;
     }
 }

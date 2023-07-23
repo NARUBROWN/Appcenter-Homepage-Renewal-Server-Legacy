@@ -35,8 +35,6 @@ public class GroupController {
 
     @Operation(summary = "그룹 멤버 (1명) 편성", description = "저장할 member_id(멤버)와 role_id(역할)을 입력해주세요")
     @Parameters({
-            @Parameter(name = "part", description = "파트"),
-            @Parameter(name = "year", description = "기수"),
             @Parameter(name = "member_id", description = "멤버 ID"),
             @Parameter(name = "role_id", description = "역할 ID")
     })
@@ -44,6 +42,14 @@ public class GroupController {
     public ResponseEntity<GroupResponseDto> assignGroup(@RequestBody GroupRequestDto groupRequestDto, Long member_id, Long role_id) throws Exception {
             GroupResponseDto groupResponseDto = groupService.assignGroup(member_id, role_id, groupRequestDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(groupResponseDto);
+    }
+
+    @Operation(summary = "그룹 멤버 (1명) 수정", description = "수정할 Group id를 입력해주세요")
+    @Parameter(name = "group_id", description = "그룹 ID")
+    @PatchMapping
+    public ResponseEntity<GroupResponseDto> updateGroup(@RequestBody GroupRequestDto groupRequestDto, Long id) throws Exception{
+        GroupResponseDto groupResponseDto = groupService.updateGroup(groupRequestDto, id);
+        return ResponseEntity.status(HttpStatus.OK).body(groupResponseDto);
     }
 
     @Operation(summary = "그룹 멤버 (1명) 삭제", description = "삭제할 Group id를 입력해주세요")

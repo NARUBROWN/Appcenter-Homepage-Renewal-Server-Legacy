@@ -37,7 +37,7 @@ POST /groups: 그룹 멤버 (1명) 저장하기
 
 DELETE /groups: 그룹 멤버 (1명) 삭제하기 / 동아리원이 그룹에 등록되어 있으면 삭제되지 않습니다.
 
-**⚠️예정 PATCH /groups: 그룹 (1명) 수정하기**
+PATCH /groups: 그룹 (1명) 수정하기
 
 GET /groups/all-groups-members: 동아리원 (전체) 가져오기
 
@@ -48,7 +48,7 @@ GET /introduction-boards: 게시글 (1개) 조회하기
 
 예정 POST /introduction-boards: 게시글 (1개) 등록하기
 
-**⚠️예정 DELETE /introduction-boards: 게시글 (1개) 삭제하기**
+DELETE /introduction-boards: 게시글 (1개) 삭제하기
 
 **⚠️예정 PATCH /introduction-boards: 게시글 (1개) 수정하기**
 
@@ -57,11 +57,11 @@ GET /introduction-boards: 게시글 (1개) 조회하기
 <h3> photo-board-controller (/photo-boards) </h3>
 사진 게시판 컨트롤러: 사진 게시판을 위한 컨트롤러입니다.<br>
 
-**⚠️예정 GET /photo-boards: 게시글 (1개) 조회하기**
+예정 GET /photo-boards: 게시글 (1개) 조회하기
 
-**⚠️예정 POST /photo-boards: 게시글 (1개) 등록하기**
+예정 POST /photo-boards: 게시글 (1개) 등록하기
 
-**⚠️예정 DELETE /photo-boards: 게시글 (1개) 삭제하기**
+예정 DELETE /photo-boards: 게시글 (1개) 삭제하기
 
 **⚠️예정 PATCH /photo-boards: 게시글 (1개) 수정하기**
 

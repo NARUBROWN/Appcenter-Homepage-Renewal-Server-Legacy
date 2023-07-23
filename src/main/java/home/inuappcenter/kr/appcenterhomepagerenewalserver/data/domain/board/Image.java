@@ -3,6 +3,8 @@ package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.ImageRequestDto;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.utils.ImageUtils;
 import jakarta.persistence.*;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,6 +40,9 @@ public class Image {
     @Column(name = "file_size")
     private Long fileSize;
 
+    @Column(name = "is_thumbnail")
+    private Boolean isThumbnail = false;
+
     public Image(String originalFileName, byte[] imageData, Long fileSize, IntroBoard introBoard) {
         this.originalFileName = originalFileName;
         this.imageData = ImageUtils.compressImage(imageData);
@@ -72,6 +77,16 @@ public class Image {
             imageList.add(image);
         }
         return imageList;
+    }
+
+    // 실행시 이미지가 Thumbnail 속성을 가지고 있다는 것에 표시가 됨
+    public void isThumbnail() {
+        this.isThumbnail = true;
+    }
+
+    // 현재 위치를 반환하는 메소드
+    public String getLocation(HttpServletRequest request, Image image) {
+        return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() +  "/image/photo/" + image.getId().toString();
     }
 
 

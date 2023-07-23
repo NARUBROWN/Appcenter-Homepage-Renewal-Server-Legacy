@@ -34,6 +34,12 @@ public class Group {
         this.year = groupRequestDto.getYear();
     }
 
+    public void setGroup(Long group_id, GroupRequestDto groupRequestDto) {
+        this.group_id = group_id;
+        this.part = groupRequestDto.getPart();
+        this.year = groupRequestDto.getYear();
+    }
+
     public GroupResponseDto toGroupResponseDto(Group group) {
         GroupResponseDto groupResponseDto = new GroupResponseDto();
         groupResponseDto.setGroupResponseDto(group);

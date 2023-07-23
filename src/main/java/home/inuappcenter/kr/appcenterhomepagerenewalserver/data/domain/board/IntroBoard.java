@@ -1,6 +1,9 @@
 package home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.board;
 
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.domain.Group;
 import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.request.BoardRequestDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.BoardResponseDto;
+import home.inuappcenter.kr.appcenterhomepagerenewalserver.data.dto.response.GroupResponseDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +15,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(name = "introduction_board")
-public class IntroBoard extends Board{
+public class IntroBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long introduction_board_id;
@@ -24,5 +27,11 @@ public class IntroBoard extends Board{
 
     public void setIntroBoard(BoardRequestDto boardRequestDto) {
         this.body = boardRequestDto.getBoard();
+    }
+
+    public BoardResponseDto<String> toBoardResponseDto(IntroBoard introBoard, String image) {
+        BoardResponseDto<String> boardResponseDto = new BoardResponseDto<>();
+        boardResponseDto.setBoardResponse(introBoard, image);
+        return boardResponseDto;
     }
 }

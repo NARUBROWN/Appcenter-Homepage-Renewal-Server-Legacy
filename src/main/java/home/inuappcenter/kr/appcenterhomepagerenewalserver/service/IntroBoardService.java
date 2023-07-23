@@ -51,6 +51,10 @@ public class IntroBoardService {
 
         // introBoard를 저장
         introBoardRepository.save(introBoard);
+
+        // 첫번째 이미지는 isThumbnail을 true로 변경
+        imageList.get(0).isThumbnail();
+
         List<Image> savedImage = imageRepository.saveAll(imageList);
 
         List<Long> imageIds = new ArrayList<>();
@@ -77,5 +81,18 @@ public class IntroBoardService {
         introBoardRepository.deleteById(id);
 
         return "id: " + id + " has been successfully deleted.";
+    }
+
+    public List<BoardResponseDto<String>> findAllBoard() {
+        List<IntroBoard> boardList = introBoardRepository.findAll();
+        List<Image> thumbnailList = imageRepository.findAllByIsThumbnailTrue();
+
+        List<BoardResponseDto<String>> boardResponseDtoList = new ArrayList<>();
+
+        for(int i=0; i<=boardList.size()-1; i++) {
+            boardResponseDtoList.add(boardList.get(i).toBoardResponseDto(boardList.get(i), thumbnailList.get(i).getLocation(request, thumbnailList.get(i))));
+        }
+
+        return boardResponseDtoList;
     }
 }
